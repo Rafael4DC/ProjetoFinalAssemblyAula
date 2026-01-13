@@ -13,6 +13,7 @@ namespace PFTesteConsole
 
             Employee emp = PFServices.BaseServices.Login(user);
 
+            Console.WriteLine("Employee");
             Console.WriteLine(emp.ID);
             Console.WriteLine(emp.Name);
 
