@@ -8,6 +8,35 @@ namespace PFRepo
     {
         static string ConnectionString = "Server=localhost;Database=Northwind;Trusted_Connection=True;TrustServerCertificate=True";
 
+        public static Employee GetEmployee(string userId)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                string query = "Select * from Employees where EmployeeID = @user_id";
+
+                // SqlCommand cmd = con.CreateCommand();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = query;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@user_id", userId);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+
+                reader.Read();
+
+                return new Employee()
+                {
+                    ID = Convert.ToInt32(reader["EmployeeID"]),
+                    Name = reader["FirstName"] + " " + reader["LastName"],
+                };
+
+            }
+        }
+
         public static Employee? Login(User user)
         {
             using (SqlConnection con = new SqlConnection(ConnectionString))
