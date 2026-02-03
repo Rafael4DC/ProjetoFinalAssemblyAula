@@ -39,6 +39,13 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
                             </li>
                         }
+
+                        <li>
+                            
+                            <form method="get" asp-page="Search">
+                                <input class="mt-2" type="text" placeholder="Search.." name="searchText" />
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -63,3 +70,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

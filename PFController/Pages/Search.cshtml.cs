@@ -18,10 +18,11 @@ namespace PFController.Pages
         public List<Category> categories { get; set; }
 
 
-        public void OnGet(string searchText)
+        public void OnGet(string? searchText)
         {
-            filters.Name = searchText;
-            BaseServices.Search(filters);
+            filters.Name = searchText ?? "";
+            products = BaseServices.Search(filters);
+            categories = BaseServices.GetCategories();
 
         }
     }

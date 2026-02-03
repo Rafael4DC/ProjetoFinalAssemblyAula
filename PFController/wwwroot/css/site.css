@@ -20,3 +20,97 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.search-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Filters */
+.filters {
+    width: 260px;
+    background: #808080;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+    .filters h2 {
+        margin-bottom: 15px;
+    }
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+    .filter-group label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+.price-range {
+    gap: 20px;
+}
+
+.apply-btn {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: #4caf50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .apply-btn:hover {
+        background: #43a047;
+    }
+
+/* Recipes */
+.recipes {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+    .recipe-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+
+.recipe-info {
+    padding: 12px;
+}
+
+    .recipe-info h3 {
+        margin: 0 0 5px 0;
+    }
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.fav-btn {
+    background: #ff5252;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .fav-btn:hover {
+        background: #e53935;
+    }

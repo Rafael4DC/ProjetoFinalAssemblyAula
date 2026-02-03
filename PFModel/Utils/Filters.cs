@@ -15,5 +15,11 @@ namespace PFModel.Utils
         public List<string> Categories { get; set; }
 
         public bool HasStock {  get; set; }
+
+        public Filters() {
+            PriceMax = double.MaxValue;
+            PriceMin = double.MinValue;
+        
+        }
     }
 }

@@ -7,6 +7,17 @@ namespace PFServices
 {
     public class BaseServices
     {
+        public static List<Category> GetCategories()
+        {
+            return new List<Category> {new Category
+            {
+                ID = "1",
+                Name = "1",
+                Description = "1",
+                Picture = "1",
+            } };
+        }
+
         public static Employee getEmployee(string? userId)
         {
             if (userId == null) throw new ArgumentNullException("User id was null");
@@ -32,11 +43,11 @@ namespace PFServices
 
             products = products
                 .Where(product => 
-                        product.Name.Contains(filters.Name) && //Filter by name
-                        product.UnitPrice > filters.PriceMin && product.UnitPrice < filters.PriceMax && //Filter by price
-                        ((product.UnitsInStock > 0 && filters.HasStock) || (!filters.HasStock)) && //Filter by Stock
-                        (filters.Categories.IsNullOrEmpty() || categoryIds.Contains(product.Category.ID))) //Filter by categories
-                .ToList();
+                        product.Name.ToLower().Contains(filters.Name.ToLower())  //Filter by name
+                        && product.UnitPrice > filters.PriceMin && product.UnitPrice < filters.PriceMax  //Filter by price
+                        && ((product.UnitsInStock > 0 && filters.HasStock) || (!filters.HasStock))  //Filter by Stock
+                        && (filters.Categories.IsNullOrEmpty() || categoryIds.Contains(product.Category.ID)) //Filter by categories
+                ).ToList();
 
             return products;
             

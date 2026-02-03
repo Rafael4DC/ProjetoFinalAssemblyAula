@@ -1,4 +1,70 @@
 ﻿@page
 @model PFController.Pages.SearchModel
+
 @{
+    ViewData["Title"] = "Search";
 }
+
+<link rel="stylesheet" href="~/css/search.css" />
+
+<div class="search-container">
+    <!-- Filters -->
+    <aside class="filters">
+        <h2>Filters</h2>
+
+        <form method="get">
+            <div class="filter-group">
+                <label>Name</label>
+                <input type="text" name="Name" />
+            </div>
+
+            <div class="filter-group">
+                <label>Price Range</label>
+                <div class="price-range">
+                    <input type="number" name="PriceMin" placeholder="Min" />
+                    <br/>
+                    <input type="number" name="PriceMax" placeholder="Max" />
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>Categories</label>
+                @foreach (var category in Model.categories)
+                {
+                    <div>
+                        <input type="checkbox" name="Categories" value="@category" />
+                        <span>@category.Name</span>
+                    </div>
+                }
+                <div class="filter-group">
+                    <input type="checkbox" name="HasStock" />
+                    <label>In Stock Only</label>
+                </div>
+            </div>
+
+            <button type="submit" class="apply-btn">Apply Filters</button>
+        </form>
+    </aside>
+
+    <!-- Recipes -->
+    <section class="recipes">
+        @foreach (var recipe in Model.products)
+        {
+            <div class="recipe-card">
+                <img src="@recipe.ImageURL" alt="@recipe.Name" />
+
+                <div class="recipe-info">
+                    <h3>@recipe.Name</h3>
+
+                    <div class="rating">
+                        ⭐ @recipe.Rating / 5
+                    </div>
+
+                    <button class="fav-btn">
+                        💕 Favorite
+                    </button>
+                </div>
+            </div>
+        }
+    </section>
+</div>

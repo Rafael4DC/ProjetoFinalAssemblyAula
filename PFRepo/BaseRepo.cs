@@ -105,7 +105,7 @@ namespace PFRepo
                     product.QuantityByUnit = reader["QuantityPerUnit"].ToString();
                     product.UnitPrice = Convert.ToDouble(reader["UnitPrice"]);
                     product.UnitsInStock = Convert.ToInt32(reader["UnitsInStock"]);
-
+                    products.Add(product);
                 }
                 return products;
             }
