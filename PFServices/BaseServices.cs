@@ -7,6 +7,11 @@ namespace PFServices
 {
     public class BaseServices
     {
+        public static bool AddFavorite(string productId, string userId)
+        {
+            return BaseRepo.AddFavorite(productId, userId);
+        }
+
         public static List<Category> GetCategories()
         {
             return new List<Category> {new Category

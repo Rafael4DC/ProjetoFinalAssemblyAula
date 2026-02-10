@@ -9,6 +9,28 @@ namespace PFRepo
     {
         static string ConnectionString = "Server=localhost;Database=Northwind;Trusted_Connection=True;TrustServerCertificate=True";
 
+        public static bool AddFavorite(string productId, string userId)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                string query = "Insert into Favorites Values(@userId,@productId)";
+
+                // SqlCommand cmd = con.CreateCommand();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = query;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@productId", productId);
+
+                con.Open();
+                int changes = cmd.ExecuteNonQuery();
+
+                if (changes == 1) return true;
+                else return false;
+            }
+        }
+
         public static List<Category> GetCategories()
         {
             using (SqlConnection con = new SqlConnection(ConnectionString))

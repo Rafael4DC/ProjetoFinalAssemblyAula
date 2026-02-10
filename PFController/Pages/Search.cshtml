@@ -5,6 +5,12 @@
     ViewData["Title"] = "Search";
 }
 
+@functions {
+    public object? GetHello()
+    {
+        return Model.Foo("123");
+    }
+}
 <link rel="stylesheet" href="~/css/search.css" />
 
 <div class="search-container">
@@ -59,10 +65,16 @@
                     <div class="rating">
                         ⭐ @recipe.Rating / 5
                     </div>
+                    @if (HttpContext.Request.Cookies["user_id"] != null)
+                    {
+                        <form method="post" action="">
+                            <input type="hidden" name="product_id" value="@recipe.ID" />
+                            <button class="fav-btn" type="submit">
+                                💕 Favorite
+                            </button>
+                        </form>
+                    }
 
-                    <button class="fav-btn">
-                        💕 Favorite
-                    </button>
                 </div>
             </div>
         }
