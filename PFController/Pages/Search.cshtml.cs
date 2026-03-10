@@ -9,7 +9,7 @@ namespace PFController.Pages
 {
     public class SearchModel : PageModel
     {
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public Filters filters { get; set; } = new Filters(); //Cuidado pode causar problemas com o trazer da informação
 
         [BindProperty]
@@ -21,7 +21,7 @@ namespace PFController.Pages
 
         public void OnGet(string? Name)
         {
-            filters.Name = Name ?? "";
+            Console.WriteLine("Fiz o on get");
             products = BaseServices.Search(filters);
             categories = BaseServices.GetCategories();
 
@@ -36,6 +36,7 @@ namespace PFController.Pages
 
         public IActionResult OnPost()
         {
+            Console.WriteLine("Fiz o on post");
             if (HttpContext.Request.Cookies["user_id"] == null)
                 return new RedirectToPageResult("/Login");
 

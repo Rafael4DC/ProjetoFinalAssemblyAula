@@ -21,15 +21,15 @@
         <form method="get">
             <div class="filter-group">
                 <label>Name</label>
-                <input type="text" name="Name" />
+                <input type="text" name="Name" value="@Model.filters.Name" />
             </div>
 
             <div class="filter-group">
                 <label>Price Range</label>
                 <div class="price-range">
-                    <input type="number" name="PriceMin" placeholder="Min" />
+                    <input type="number" name="PriceMin" placeholder="Min" value="@Model.filters.PriceMin" />
                     <br/>
-                    <input type="number" name="PriceMax" placeholder="Max" />
+                    <input type="number" name="PriceMax" placeholder="Max" value="@Model.filters.PriceMax" />
                 </div>
             </div>
 

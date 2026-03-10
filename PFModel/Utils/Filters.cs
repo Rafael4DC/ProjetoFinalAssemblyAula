@@ -19,6 +19,7 @@ namespace PFModel.Utils
         public Filters() {
             PriceMax = double.MaxValue;
             PriceMin = double.MinValue;
+            Name = "";
         
         }
     }
